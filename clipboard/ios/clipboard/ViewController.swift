@@ -1,0 +1,21 @@
+import UIKit
+import WebKit
+
+class ViewController: UIViewController {
+
+    var webView: WKWebView!
+    override func viewDidLoad() {
+    super.viewDidLoad()
+        let request = URLRequest(url: URL(string: "customscheme://localhost/index.html")!)
+        _ = webView?.load(request)
+    }
+
+    override func loadView() {
+        let webViewConfiguration = WKWebViewConfiguration()
+        webViewConfiguration.setURLSchemeHandler(WebViewHander(), forURLScheme: "customscheme")
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
+        view = webView
+    }
+
+}
+

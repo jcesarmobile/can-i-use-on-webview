@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <title>Clipboard Example</title>
+        <style>
+            body {
+                padding: 12px;
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+            #actions {
+                display: none; 
+            }
+        </style>
+    </head>
+    <body>
+        <p>Clipboard Example</p>
+        <p id="result"></p>
+        <div id="actions">
+            <input id="copytext" type="text"placeholder="enter text to copy"/>
+            <p id="pasteresult"></p>
+            <button id="read">read clipboard</button>
+            <button id="write">write clipboard</button>
+        </div>
+        <script>
+            if (!navigator.clipboard) {
+                document.getElementById("result").innerHTML = 'clipboard not supported';
+            } else if (!navigator.clipboard.writeText) {
+                document.getElementById("result").innerHTML = 'clipboard writeText not supported';
+            } else {
+                document.getElementById("actions").style.display = 'block';
+                document.getElementById("result").innerHTML = 'clipboard supported';
+            }
+            const read = document.getElementById("read");
+            read.addEventListener("click", function() {
+                readText();
+            });
+            const write = document.getElementById("write");
+            write.addEventListener("click", function() {
+                writeText();
+            });
+
+            async function readText() {
+                const text = await navigator.clipboard.readText();
+                document.getElementById("pasteresult").innerHTML = text;
+            }
+            async function writeText() {
+                const textValue = document.getElementById("copytext").value;
+                await navigator.clipboard.writeText(textValue);
+                document.getElementById("pasteresult").innerHTML = `${textValue} saved to clipboard`;
+            }
+        </script>
+    </body>
+</html>
