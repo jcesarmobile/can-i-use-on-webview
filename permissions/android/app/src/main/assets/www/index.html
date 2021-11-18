@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <title>Permissions Example</title>
+        <style>
+            body {
+                padding: 12px;
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+        </style>
+    </head>
+    <body>
+        <p>Permissions Example</p>
+        <p id="result"></p>
+        <script>
+            if (!navigator.permissions) {
+                document.getElementById("result").innerHTML = 'not supported';
+            } else {
+                document.getElementById("result").innerHTML = 'supported';
+            }
+        </script>
+    </body>
+</html>

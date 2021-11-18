@@ -10,3 +10,4 @@ The repository can also be used to report issues to WebKit and Chromium teams wi
 | JavaScript API | iOS | Android |
 | -------------- | --- | ------- |
 | geolocation    |  ❌  |   ✅    |
+| permissions    |  ❌  |   ❌    |
