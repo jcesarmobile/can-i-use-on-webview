@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class ViewController: UIViewController {
 
     var webView: WKWebView!
     override func viewDidLoad() {
@@ -13,10 +13,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func loadView() {
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.setURLSchemeHandler(WebViewHander(), forURLScheme: "customscheme")
-        webViewConfiguration.allowsInlineMediaPlayback = true
-        webViewConfiguration.mediaTypesRequiringUserActionForPlayback = []
         webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
-        webView.navigationDelegate = self
         view = webView
     }
 

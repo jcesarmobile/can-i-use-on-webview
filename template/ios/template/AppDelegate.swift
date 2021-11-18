@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  template
-//
-//  Created by Julio Cesar Sanchez on 15/11/2021.
-//
-
 import UIKit
 
 @main
