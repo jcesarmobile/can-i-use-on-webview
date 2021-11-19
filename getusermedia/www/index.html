@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <title>getUserMedia Example</title>
+        <style>
+            body {
+                padding: 12px;
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+        </style>
+    </head>
+    <body>
+        <p>getUserMedia Example</p>
+        <button id="start">start video</button>
+        <video width="320" height="240" controls>
+            Your browser does not support the video tag.
+        </video>
+        <script>
+            let p = document.getElementById("start");
+            p.onclick = startVideo;
+            function startVideo() {
+                const constraints = { audio: false, video: { facingMode: "user" } }
+                navigator.mediaDevices.getUserMedia(constraints)
+                .then(function(mediaStream) {
+                    window.stream = mediaStream;
+                    const video = document.querySelector('video');
+                    video.srcObject = mediaStream;
+                    video.onloadedmetadata = function(e) {
+                            video.play();
+                    };
+                })
+                .catch(function(err) { alert(err.name + ": " + err.message); });
+            }
+        </script>
+    </body>
+</html>
