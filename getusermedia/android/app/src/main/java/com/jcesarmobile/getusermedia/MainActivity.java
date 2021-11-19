@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
                 .build();
         WebView webView = findViewById(R.id.webview);
+        WebView.setWebContentsDebuggingEnabled(true);
         WebSettings webViewSettings = webView.getSettings();
         webViewSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
